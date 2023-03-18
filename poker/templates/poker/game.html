@@ -1,0 +1,331 @@
+<!doctype html>
+<html>
+   <head>
+    {% load static %}
+      <title>Poker</title>
+      <meta content="text/html; charset=utf-8" />
+      <link rel="stylesheet" type="text/css" href="{% static 'poker/poker.css' %}">
+      <link rel="shortcut icon" href="{% static 'poker/images/icon.png' %}" />
+      <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+   </head>
+   <body>
+        <div id="form-player-name">
+            <input id='form-input' placeholder="Insira seu apelido" />
+            <button id='form-btn'>
+                Jogar
+            </button>
+        </div>
+        <div style="display: none; background-image: url('{% static 'poker/images/poker_table.png' %}');" id="poker_table" class="poker-table" data-uid="">
+            <div id="seat0" class="seat">
+                <div class="holecards" id="hcplayer">
+                <div class="card holecard1" id="hplayer1" style="opacity: 1;"></div>
+                <div class="card holecard2" id="hplayer2" style="opacity: 1;"></div>
+                </div>
+                <div class="name-chips" id="playernamechips">
+                <div class="player-name" id="mplayername"></div>
+                <div class="chips" id="mplayerbalance"></div>
+                <div id="button0" class="seat0-button"></div>
+                </div>
+                <div class="bet" id="mybet"></div>
+            </div>
+            <div id="seat1" style='display: none;' class="seat">
+                <div class="holecards" id="bcplayer">
+                <div class="card holecard1" id="bplayer1"></div>
+                <div class="card holecard2" id="bplayer2"></div>
+                
+                </div>
+                <div class="name-chips" id="botnamechips">
+                <div class="player-name" id="bplayername"></div>
+                <div class="chips" id="bplayerbalance"></div>
+                <div id="button1" class="seat1-button"></div>
+                </div>
+                <div class="bet" id="bbet1"></div>
+            </div>
+            <div id="seat2" style='display: none;' class="seat">
+                <div class="holecards" id="bcplayer">
+                <div class="card holecard1" id="bplayer1"></div>
+                <div class="card holecard2" id="bplayer2"></div>
+                
+                </div>
+                <div class="name-chips" id="botnamechips">
+                <div class="player-name" id="bplayername"></div>
+                <div class="chips" id="bplayerbalance"></div>
+                <div id="button2" class="seat2-button"></div>
+                </div>
+                <div class="bet" id="bbet2"></div>
+            </div>
+            <div id="seat3" style='display: none;' class="seat">
+                <div class="holecards" id="bcplayer">
+                <div class="card holecard1" id="bplayer1"></div>
+                <div class="card holecard2" id="bplayer2"></div>
+                
+                </div>
+                <div class="name-chips" id="botnamechips">
+                <div class="player-name" id="bplayername"></div>
+                <div class="chips" id="bplayerbalance"></div>
+                <div id="button3" class="seat3-button"></div>
+                </div>
+                <div class="bet" id="bbet3"></div>
+            </div>
+            <div id="seat4" style='display: none;' class="seat">
+                <div class="holecards" id="bcplayer">
+                <div class="card holecard1" id="bplayer1"></div>
+                <div class="card holecard2" id="bplayer2"></div>
+                
+                </div>
+                <div class="name-chips" id="botnamechips">
+                <div class="player-name" id="bplayername"></div>
+                <div class="chips" id="bplayerbalance"></div>
+                <div id="button4" class="seat4-button"></div>
+                </div>
+                <div class="bet" id="bbet4"></div>
+            </div>
+            <div id="seat5" style='display: none;' class="seat">
+                <div class="holecards" id="bcplayer">
+                <div class="card holecard1" id="bplayer1"></div>
+                <div class="card holecard2" id="bplayer2"></div>
+                
+                </div>
+                <div class="name-chips" id="botnamechips">
+                <div class="player-name" id="bplayername"></div>
+                <div class="chips" id="bplayerbalance"></div>
+                <div id="button5" class="seat5-button"></div>
+                </div>
+                <div class="bet" id="bbet5"></div>
+            </div>
+            <div id="seat6" style='display: none;' class="seat">
+                <div class="holecards" id="bcplayer">
+                <div class="card holecard1" id="bplayer1"></div>
+                <div class="card holecard2" id="bplayer2"></div>
+                
+                </div>
+                <div class="name-chips" id="botnamechips">
+                <div class="player-name" id="bplayername"></div>
+                <div class="chips" id="bplayerbalance"></div>
+                <div id="button6" class="seat6-button"></div>
+                </div>
+                <div class="bet" id="bbet6"></div>
+            </div>
+            <div id="seat7" style='display: none;' class="seat">
+                <div class="holecards" id="bcplayer">
+                <div class="card holecard1" id="bplayer1"></div>
+                <div class="card holecard2" id="bplayer2"></div>
+                
+                </div>
+                <div class="name-chips" id="botnamechips">
+                <div class="player-name" id="bplayername"></div>
+                <div class="chips" id="bplayerbalance"></div>
+                <div id="button7" class="seat7-button"></div>
+                </div>
+                <div class="bet" id="bbet7"></div>
+            </div>
+            <div id="seat8" style='display: none;' class="seat">
+                <div class="holecards" id="bcplayer">
+                <div class="card holecard1" id="bplayer1"></div>
+                <div class="card holecard2" id="bplayer2"></div>
+                
+                </div>
+                <div class="name-chips" id="botnamechips">
+                <div class="player-name" id="bplayername"></div>
+                <div class="chips" id="bplayerbalance"></div>
+                <div id="button8" class="seat8-button"></div>
+                </div>
+                <div class="bet" id="bbet8"></div>
+            </div>
+            <div id="board">
+                <div id="board1" class="card boardcard"></div>
+                <div id="board2" class="card boardcard"></div>
+                <div id="board3" class="card boardcard"></div>
+                <div id="board4" class="card boardcard"></div>
+                <div id="board5" class="card boardcard"></div>
+            </div>
+            <div id="pot">
+                <div id="total-pot"></div>
+            </div>
+        </div>
+        <div id="actions">
+            <input type="number" id='bet-value' placeholder="Valor da aposta" />
+            <button id='fold-btn'>
+                Fold
+            </button>
+            <button id='bet-btn'>
+                Bet
+            </button>
+            <button id='check-btn'>
+                Check
+            </button>
+            <button id='start-btn'>
+                Start
+            </button>
+        </div>
+   </body>
+</html>
+{% csrf_token %}
+<script>
+    //request em loop para a api
+    //o request retorna, o jogador atual, as cartas viradas, as suas cartas
+    //e as infos dos jogadores
+
+    //quando for a vez do player, adicionar a interface botoes para apostar, aumentar e desistir
+$(document).ready(function()
+{
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+    var nick = ''
+    var game_data = () => {
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:8000/poker/gamedata/",
+            headers: {'X-CSRFToken': csrftoken},
+            data: JSON.stringify({ nick: nick, room: {{pk}} }),
+    
+            success: function(response){
+            if(response.game_started == 'true'){
+                $('#start-btn').css('display', 'none')
+            }
+            if (response.winner == 'true'){
+                $('#bet-value').css('display', 'none')
+                $('#fold-btn').css('display', 'none')
+                $('#bet-btn').css('display', 'none')
+                $('#check-btn').css('display', 'none')
+                $('#start-btn').css('display', 'inline-block')
+            } else if(response.round_player_nick == nick){
+                
+                bet_minima = response.pot.currentpot - response.players[0].playerbetvalue
+                if (bet_minima == 0){
+                    $('#check-btn').css('display', 'inline-block')
+                }
+                if (!$('#bet-value').is(':visible')){
+                    $('#bet-value').val(bet_minima)
+                    $('#bet-value').css('display', 'inline-block')
+                }
+                $('#fold-btn').css('display', 'inline-block')
+                $('#bet-btn').css('display', 'inline-block')
+            } else {
+                $('#bet-value').css('display', 'none')
+                $('#fold-btn').css('display', 'none')
+                $('#bet-btn').css('display', 'none')
+                $('#check-btn').css('display', 'none')
+            }
+            
+            for (var i = 0; i < 9; i++) {
+                if (i != 0 && response.players[i]){
+                    $('#seat'+i).css('display', 'block')
+                    $('#seat'+i+' > #botnamechips > #bplayername').text(response.players[i].playername)
+                    $('#seat'+i+' > #botnamechips > #bplayerbalance').text(response.players[i].playerbalance)
+                    $('#seat'+i+' > #bbet'+i).text(response.players[i].playerbet)
+                    $('#seat'+i+' > #bbet'+i).css('background', response.players[i].playerbetcolor)
+                    if (response.players[i].dealer == 'false'){    
+                        $('#seat'+i+' > #botnamechips > #button' + i).css('display', 'none')
+                    } else {
+                        $('#seat'+i+' > #botnamechips > #button' + i).css('display', 'block')
+                    }
+                    urlpath = "{% static 'poker/images/' %}"
+                    card1 = 'cardback'
+                    card2 = 'cardback'
+                    if (response.players[i].winner == 'true'){
+                        card1 = response.players[i].card1
+                        card2 = response.players[i].card2
+                    }
+                    $('#seat'+i+' > #bcplayer > #bplayer1').css('background-image', 'url(\'' + urlpath + card1 + '.png\')');
+                    $('#seat'+i+' > #bcplayer > #bplayer2').css('background-image', 'url(\'' + urlpath + card2 + '.png\')');
+                } else if (response.players[i]) {
+                    $('#seat'+i+' > #playernamechips > #mplayername').text(response.players[i].playername)
+                    $('#seat'+i+' > #playernamechips > #mplayerbalance').text(response.players[i].playerbalance)
+                    $('#seat'+i+' > #mybet').text(response.players[i].playerbet)
+                    $('#seat'+i+' > #mybet').css('background', response.players[i].playerbetcolor)
+                    if (response.players[i].dealer == 'false'){    
+                        $('#seat'+i+' > #playernamechips > #button' + i).css('display', 'none')
+                    } else {
+                        $('#seat'+i+' > #playernamechips > #button' + i).css('display', 'block')
+                    }
+                    urlpath = "{% static 'poker/images/' %}"
+                    $('#seat'+i+' > #hcplayer > #hplayer1').css('background-image', 'url(\'' + urlpath + response.players[i].card1 + '.png\')');
+                    $('#seat'+i+' > #hcplayer > #hplayer2').css('background-image', 'url(\'' + urlpath + response.players[i].card2 + '.png\')');
+                }
+            }
+            for (var i = 1; i <= 5; i++) {
+                if (response.board[i] != 'none' && (response.game_round >= 3 || response.game_round == 2 && i != 5 || response.game_round == 1 && i <= 3)){
+                    urlpath = 'url(\'' + "{% static 'poker/images/' %}" + response.board[i] + '.png\')';
+                } else {
+                    urlpath = 'none'
+                }
+                $('#board'+i).css('background-image', urlpath);
+            }
+            $('#total-pot').text(response.pot.pottext)
+            }
+        });
+
+    }
+    var register_player = () => {
+        
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:8000/poker/registerplayer/",
+            headers: {'X-CSRFToken': csrftoken},
+            data: JSON.stringify({ nick: nick, room: {{pk}} }),
+    
+            success: function(response){
+                $('#form-player-name').css('display', 'none')
+                $('#poker_table').css('display', 'block')
+                setInterval(function(){
+                    game_data()
+                }, 500);
+            },
+            error: function (request, status, error) {
+                alert('Escolha outro apelido');
+            }
+
+        });
+    }
+    
+    
+    $('#form-btn').click(function() {
+        if ($('#form-input').val().length > 4) {
+            nick = $('#form-input').val()
+            register_player()
+        } else {
+            alert('O apelido deve ter mais de 4 caracteres')
+        }
+    })
+    
+    $('#start-btn').click(function() {
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:8000/poker/startgame/",
+            headers: {'X-CSRFToken': csrftoken},
+            data: JSON.stringify({ nick: nick, room: {{pk}} }),
+        });
+    })
+    
+    $('#fold-btn').click(function() {
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:8000/poker/fold/",
+            headers: {'X-CSRFToken': csrftoken},
+            data: JSON.stringify({ nick: nick, room: {{pk}} }),
+        });
+    })
+    
+    $('#check-btn').click(function() {
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:8000/poker/check/",
+            headers: {'X-CSRFToken': csrftoken},
+            data: JSON.stringify({ nick: nick, room: {{pk}} }),
+        });
+    })
+    
+    $('#bet-btn').click(function() {
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:8000/poker/bet/",
+            headers: {'X-CSRFToken': csrftoken},
+            data: JSON.stringify({ nick: nick, room: {{pk}}, value: $('#bet-value').val() }),
+        });
+    })
+});
+</script>

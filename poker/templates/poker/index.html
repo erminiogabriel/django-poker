@@ -1,0 +1,28 @@
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'poker/index.css' %}">
+<link rel="shortcut icon" href="{% static 'poker/images/icon.png' %}" />
+{% if list_of_rooms %}
+<div class="widget">
+    <ol class="widget-list">
+        {% for room in list_of_rooms %}
+        <li>
+            <a href="{% url 'poker:game' room.id %}" class="widget-list-link">
+                <img src="{% static 'poker/images/icon.png' %}">
+                {{ room.room_name }} <span>{{ room.current_players }} / 9</span>
+            </a>
+        </li>
+        {% endfor %}
+    </ol>
+  </div>
+
+
+
+
+
+
+    <ul>
+    </ul>
+{% else %}
+    <p>Não há salas disponíveis.</p>
+{% endif %}
